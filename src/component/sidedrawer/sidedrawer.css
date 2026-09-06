@@ -1,0 +1,126 @@
+.second-nav {
+  width: 25rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background: linear-gradient(145deg, rgba(10, 23, 40), rgba(4, 14, 27));
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+.hidenav {
+  transform: translateX(-100rem);
+}
+
+.shownav {
+  transform: translateX(0);
+}
+@media (max-width: 936px) {
+  .second-nav {
+    display: block;
+  }
+}
+
+@media (max-width: 604px) {
+  .second-nav {
+    width: 60%;
+  }
+}
+
+.second-logo {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.norm {
+  margin-left: 0;
+}
+
+.nav-link-container-2 {
+  width: 100%;
+  height: auto;
+}
+
+.navlinks-container-2 {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: -1rem;
+}
+
+.navlinks-2 {
+  /* display: inline; */
+  display: flex;
+  height: 2rem;
+  cursor: pointer;
+  align-items: center;
+  color: rgb(211, 210, 210);
+}
+
+.navlinks-2:not(:first-child) {
+  margin-top: 1.4rem;
+}
+
+.navlinks-2 > a {
+  text-decoration: none;
+  color: rgb(211, 210, 210);
+  font-weight: 700;
+  margin-left: 0.61rem;
+}
+
+.signin-2 {
+  background-color: #9857ff;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  border-radius: 0.61rem;
+}
+
+.letter {
+  background-color: rgb(91, 39, 131);
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  color: rgb(213, 212, 212);
+  font-weight: 600;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.profile-nav-container {
+  margin: auto;
+  display: flex;
+  align-items: baseline;
+  width: 95%;
+}
+
+.profile-nav-name {
+  margin-left: 0.5rem;
+  color: rgb(175, 174, 174);
+  font-weight: 600;
+  /* font-size: 0.7rem; */
+}
+
+.logout-button {
+  /* background-color: #9857ff; */
+  border: none;
+  width: 80%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  font-size: 1.1rem;
+  color: rgb(173, 172, 172);
+  margin-bottom: 0;
+  transform: translateY(15rem);
+  margin: auto;
+  cursor: pointer;
+}

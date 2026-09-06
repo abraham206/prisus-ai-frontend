@@ -1,0 +1,534 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #020916;
+  color: #f8fafc;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =========================================
+   PAGE
+========================================= */
+
+.signin-page {
+  background:
+    radial-gradient(
+      circle at 75% 45%,
+      rgba(104, 45, 255, 0.08),
+      transparent 30%
+    ),
+    #020916;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 055rem;
+}
+
+.showcase-heading {
+  margin-top: 105px;
+  max-width: 480px;
+}
+
+.showcase-heading h1 {
+  margin: 0;
+
+  font-size: clamp(42px, 4vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -2.5px;
+}
+
+.showcase-heading h1 span {
+  color: #914cff;
+
+  background: linear-gradient(90deg, #a855f7, #7441ff);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.showcase-heading p {
+  margin-top: 27px;
+  max-width: 450px;
+
+  font-size: 16px;
+  line-height: 1.75;
+  color: #aab4c6;
+}
+
+.showcase-heading strong {
+  color: #9b5cff;
+}
+
+.signin-section {
+  /* min-height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 45px 6%;
+  /* background-color: red; */
+}
+
+.signin-container {
+  width: 30rem;
+  max-width: 680px;
+}
+
+.signin-top {
+  /* transform: translateY(-5rem); */
+}
+
+.signin-card {
+  width: 100%;
+  padding: 42px 56px;
+  border: 1px solid #1b2a40;
+  border-radius: 18px;
+  background: linear-gradient(
+    145deg,
+    rgba(10, 23, 40, 0.85),
+    rgba(4, 14, 27, 0.92)
+  );
+
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+/* =========================================
+   BRAND ICON
+========================================= */
+
+.brand-icon {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 23px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  color: #9b5cff;
+  font-size: 29px;
+
+  background: radial-gradient(
+    circle,
+    rgba(130, 64, 255, 0.23),
+    rgba(85, 35, 160, 0.07)
+  );
+
+  border: 1px solid rgba(139, 92, 246, 0.2);
+
+  box-shadow: 0 0 35px rgba(116, 46, 255, 0.15);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.signin-header {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.signin-header h2 {
+  margin: 0;
+
+  font-size: 34px;
+  letter-spacing: -1.2px;
+}
+
+.signin-header p {
+  margin: 10px 0 0;
+
+  color: #8995aa;
+  font-size: 15px;
+}
+
+.signin-header span {
+  color: #9857ff;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #e2e8f0;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 52px;
+
+  padding: 0 16px;
+
+  border: 1px solid #203047;
+  border-radius: 9px;
+
+  background: #06101e;
+
+  color: #7f8ca2;
+  border-color: #8245ff;
+
+  transition: 0.2s ease;
+}
+
+.validate {
+  border: 3px solid rgb(183, 19, 19);
+}
+.input-wrapper:focus-within {
+  /* border-color: #8245ff; */
+
+  box-shadow: 0 0 0 3px rgba(130, 69, 255, 0.1);
+}
+
+.input-wrapper svg {
+  flex-shrink: 0;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 100%;
+
+  margin-left: 13px;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.input-wrapper input::placeholder {
+  color: #68758b;
+}
+
+.password-toggle {
+  display: flex;
+
+  border: 0;
+  padding: 0;
+
+  background: transparent;
+
+  color: #68758b;
+}
+
+.password-toggle:hover {
+  color: #a855f7;
+}
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-wrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: -5px;
+  margin-bottom: 25px;
+}
+
+.forgot-wrapper a {
+  color: #a05aff;
+
+  font-size: 13px;
+
+  transition: 0.2s ease;
+}
+
+.forgot-wrapper a:hover {
+  color: #bc88ff;
+}
+
+/* =========================================
+   SIGN IN BUTTON
+========================================= */
+
+.signin-button {
+  width: 100%;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  border: 0;
+  border-radius: 9px;
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  background: linear-gradient(100deg, #7136ed, #5621cc);
+
+  box-shadow: 0 8px 25px rgba(104, 45, 230, 0.2);
+
+  transition: 0.2s ease;
+}
+
+.signin-button:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 12px 30px rgba(104, 45, 230, 0.32);
+
+  filter: brightness(1.08);
+}
+
+.signin-button:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   DIVIDER
+========================================= */
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  margin: 31px 0;
+}
+
+.divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background: #1c2a3e;
+}
+
+.divider p {
+  margin: 0;
+
+  color: #7f8ca2;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+}
+
+/* =========================================
+   SOCIAL BUTTONS
+========================================= */
+
+.social-button {
+  position: relative;
+
+  width: 100%;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 12px;
+
+  border: 1px solid #203047;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #e5e7eb;
+
+  font-size: 14px;
+
+  transition: 0.2s ease;
+}
+
+.social-button:hover {
+  border-color: #354761;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.google-icon,
+.github-icon {
+  position: absolute;
+  left: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-icon {
+  font-size: 19px;
+  font-weight: 700;
+
+  color: #4285f4;
+}
+
+.github-icon {
+  color: #f8fafc;
+}
+
+/* =========================================
+   SIGN UP
+========================================= */
+
+.signup-text {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+
+  margin-top: 31px;
+
+  font-size: 14px;
+  color: #7f8ca2;
+}
+
+.signup-text a {
+  color: #a15aff;
+  font-weight: 500;
+}
+
+.signup-text a:hover {
+  color: #bd89ff;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.signin-footer {
+  margin-top: 28px;
+
+  text-align: center;
+
+  color: #4f5d72;
+
+  font-size: 11px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+  .signin-page {
+    grid-template-columns: 1fr;
+  }
+
+  .signin-showcase {
+    display: none;
+  }
+
+  .signin-section {
+    min-height: 100vh;
+  }
+
+  .signin-container {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 650px) {
+  .signin-section {
+    padding: 25px 18px;
+  }
+
+  .signin-card {
+    padding: 35px 25px;
+
+    border-radius: 15px;
+  }
+
+  .signin-header h2 {
+    font-size: 29px;
+  }
+
+  .trust-items {
+    display: none;
+  }
+
+  .signin-footer {
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 400px) {
+  .signin-card {
+    padding: 30px 18px;
+  }
+
+  .signin-header h2 {
+    font-size: 26px;
+  }
+
+  .social-button {
+    font-size: 13px;
+  }
+}
+
+.hide-err {
+  opacity: 0;
+}
+
+.show-err {
+  opacity: 1;
+}
+
+@media (max-width: 502px) {
+  .signin-card {
+    width: 100%;
+    margin: auto;
+  }
+
+  .signin-container {
+    width: 100%;
+    margin: auto;
+    height: 100%;
+  }
+}
+
+@media (max-width: 472px) {
+  .err-signin-mssg {
+    width: 80%;
+  }
+}
+
+@media (max-width: 375px) {
+  .err-signin-mssg {
+    font-size: 0.8rem;
+    width: 70%;
+  }
+}

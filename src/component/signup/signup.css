@@ -1,0 +1,16 @@
+.large {
+  height: 18rem;
+}
+
+.signup {
+  transform: translateY(7rem);
+}
+
+.color {
+  color: #7c5cfc;
+  letter-spacing: 0.2rem;
+}
+
+.signup-down {
+  transform: translateY(5rem);
+}

@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  background-color: #232b3a;
+  font-family: Inter, "Segoe UI", sans-serif;
+  /* background-color: black; */
+  /* height: 300vh; */
+}
+
+.animate {
+  transition: all 0.3s ease-in-out;
+}
+
+.animate:hover {
+  background-color: rgb(73, 87, 117);
+  transform: scale(1.1);
+}
+
+.animation {
+  transform: translateY(10rem);
+  opacity: 0;
+}
+
+.select {
+  transition: all 1s ease-in-out;
+}
