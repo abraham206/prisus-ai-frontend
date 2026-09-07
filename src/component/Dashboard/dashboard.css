@@ -337,6 +337,7 @@
   display: flex;
   justify-content: space-around;
   height: auto;
+  padding-bottom: 0.7rem;
   transform: translateY(0.4rem);
   margin: auto;
   /* padding-bottom: 0.3rem; */
