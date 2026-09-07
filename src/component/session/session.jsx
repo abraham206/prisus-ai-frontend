@@ -325,7 +325,9 @@ export default function Session() {
                 </div>
                 <div className="dashboard-data">
                   <span className="same">Total time</span>
-                  <span className="same val">{totalTimePerUser}</span>
+                  <span className="same val">
+                    {totalTimePerUser || "00hr:00min"}
+                  </span>
                   <span className="same">Spent</span>
                 </div>
               </div>
