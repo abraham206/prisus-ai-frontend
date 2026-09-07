@@ -457,7 +457,9 @@ export default function Session() {
                             {el.subject} - {el.type}
                           </span>
                           <div className="session-detail">
-                            <span className="session-number">20 Questions</span>
+                            <span className="session-number">
+                              {el?.number || "20"} Questions
+                            </span>
                             <span className="session-type-session">Quiz</span>
                           </div>
                         </div>
