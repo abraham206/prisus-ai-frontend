@@ -3,6 +3,8 @@ import "./editUserPassword.css";
 import { LuX, LuLock } from "react-icons/lu";
 import { GlobalState } from "../../App";
 import { useContext } from "react";
+import { useEffect } from "react";
+
 // https://prisus-backend.onrender.com
 
 export default function EditPassword(props) {

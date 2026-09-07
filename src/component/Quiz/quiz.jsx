@@ -96,15 +96,66 @@ export default function Quiz() {
 
   const prevQuestion = () => {
     if (questionNumber === 0) return;
-    const previndex = questionNumber - 1;
-    setQuestionNumber(previndex);
-    const quizQuestion = array.find((el) => el.questionNo === previndex);
-    console.log(questionNumber, "current previous number");
 
-    setSelected(quizQuestion?.answerSelected);
-    setUserAnswer(quizQuestion?.answerSelected);
-    console.log(quizQuestion?.answerSelected, "previous question answer");
+    // Save the current question's answer before moving
+    if (selected !== null) {
+      setArray((prevArray) =>
+        prevArray.map((el) =>
+          el.questionNo === questionNumber
+            ? {
+                ...el,
+                answerSelected: selected,
+              }
+            : el,
+        ),
+      );
+    }
+
+    const prevIndex = questionNumber - 1;
+
+    // Find the previous question's saved answer
+    const previousQuestion = array.find((el) => el.questionNo === prevIndex);
+
+    // Move to previous question
+    setQuestionNumber(prevIndex);
+
+    // Load previous question's answer
+    const previousAnswer = previousQuestion?.answerSelected || null;
+
+    setSelected(previousAnswer);
+    setUserAnswer(previousAnswer);
   };
+
+  const nextQuestion = () => {
+    if (selected === null) return;
+
+    // Save the current question's answer
+    setArray((prevArray) =>
+      prevArray.map((el) =>
+        el.questionNo === questionNumber
+          ? {
+              ...el,
+              answerSelected: selected,
+            }
+          : el,
+      ),
+    );
+
+    const nextIndex = questionNumber + 1;
+
+    // Find the next question's saved answer
+    const nextQuestionData = array.find((el) => el.questionNo === nextIndex);
+
+    // Move to next question
+    setQuestionNumber(nextIndex);
+
+    // Load next question's previous answer, if any
+    const nextAnswer = nextQuestionData?.answerSelected ?? null;
+
+    setSelected(nextAnswer);
+    setUserAnswer(nextAnswer);
+  };
+
   return (
     <section className="quiz-section">
       <div className="quiz-container">
@@ -302,68 +353,7 @@ export default function Quiz() {
               {questions?.length -
                 array?.filter((el) => el.answerSelected !== null)?.length >
               1 ? (
-                <button
-                  className="next"
-                  onClick={() => {
-                    if (userAnswer === null) {
-                      return;
-                    }
-
-                    const existingEl = array.find(
-                      (el) => el.questionNo === questionNumber,
-                    );
-                    setSelected(existingEl?.answerSelected);
-
-                    if (existingEl) {
-                      setArray((prevArray) => {
-                        return prevArray.map((el) => {
-                          return el.questionNo === questionNumber
-                            ? { ...el, answerSelected: selected }
-                            : el;
-                        });
-                      });
-                    }
-                    setQuestionNumber(
-                      (prevQuestionNumber) => prevQuestionNumber + 1,
-                    );
-                    // const previndex = questionNumber + 1;
-                    // setQuestionNumber(previndex);
-
-                    // let updatedArray;
-
-                    // if (existingEl) {
-                    //   updatedArray = array.map((el) =>
-                    //     el.questionNo === questionNumber
-                    //       ? {
-                    //           ...el,
-                    //           answerSelected: userAnswer,
-                    //         }
-                    //       : el,
-                    //   );
-                    // }
-                    // const existingEl = array.find(
-                    //   (el) => el.questionNo === questionNumber,
-                    // );
-                    // setSelected(null);
-                    // setUserAnswer(null);
-
-                    // else {
-                    //   updatedArray = [
-                    //     ...array,
-                    // {
-                    //   questionNo: questionNumber,
-                    //   question: questions[questionNumber].question,
-                    //   answerSelected: userAnswer,
-                    //   correctAnswer: questions[questionNumber].answer,
-                    //   explanation: questions[questionNumber].explanation,
-                    // },
-                    //   ];
-                    // }
-
-                    // Save the complete answers array
-                    // setArray(updatedArray);
-                  }}
-                >
+                <button className="next" onClick={nextQuestion}>
                   <FaArrowRight />
                 </button>
               ) : (

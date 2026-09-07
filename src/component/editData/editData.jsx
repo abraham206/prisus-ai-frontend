@@ -4,6 +4,7 @@ import { LuUser, LuLogOut, LuMail } from "react-icons/lu";
 import { LuX } from "react-icons/lu";
 import { FaArrowLeft } from "react-icons/fa";
 import { GlobalState } from "../../App";
+import { useEffect } from "react";
 // https://prisus-backend.onrender.com
 export default function EditUser(props) {
   const {

@@ -33,37 +33,36 @@ export default function Score() {
     setShowScore,
   } = useContext(GlobalState);
 
+  useEffect(() => {
+    const refreshToken = async () => {
+      try {
+        const response = await fetch(
+          "https://prisus-backend.onrender.com/api/auth/refresh",
+          {
+            method: "GET",
+            credentials: "include",
+          },
+        );
 
-    useEffect(() => {
-      const refreshToken = async () => {
-        try {
-          const response = await fetch(
-            "https://prisus-backend.onrender.com/api/auth/refresh",
-            {
-              method: "GET",
-              credentials: "include",
-            },
-          );
-  
-          console.log(response);
-          if (!response.ok) {
-            setSigninToken(null);
-            throw new Error(
-              `Could Not get token Status Code: ${response.status}`,
-            );
-          }
-  
-          const data = await response.json();
-          console.log(data);
-          setSigninToken(data.token);
-        } catch (error) {
+        console.log(response);
+        if (!response.ok) {
           setSigninToken(null);
+          throw new Error(
+            `Could Not get token Status Code: ${response.status}`,
+          );
         }
-      };
-  
-      refreshToken();
-    }, []);
-  
+
+        const data = await response.json();
+        console.log(data);
+        setSigninToken(data.token);
+      } catch (error) {
+        setSigninToken(null);
+      }
+    };
+
+    refreshToken();
+  }, []);
+
   const id = quizData?.id;
   const [data, setData] = useState(null);
   console.log(totalTime);
@@ -221,7 +220,7 @@ export default function Score() {
           setSigninToken(data.token);
 
           res = await fetch(
-            `https://prisus-backend.onrender.com/api/save-score/${quizData?.id}`,
+            `https://prisus-backend.onrender.com/api/save-score/${id}`,
             {
               method: "PUT",
               headers: {
