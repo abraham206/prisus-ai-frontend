@@ -1,6 +1,10 @@
 .edit-section {
   /* background-color: rgba(0, 0, 0, 0.614); */
-  background-color: rgb(20, 28, 45);
+  background: linear-gradient(
+    145deg,
+    rgba(10, 23, 40, 0.85),
+    rgba(4, 14, 27, 0.92)
+  );
   border-radius: 10px;
   /* background-color: white; */
   /* width: 60rem; */
@@ -113,8 +117,8 @@
 }
 
 .icon-2-container {
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -124,7 +128,7 @@
 }
 
 .icon-control {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 @media (max-width: 570px) {
   .word-2-head {

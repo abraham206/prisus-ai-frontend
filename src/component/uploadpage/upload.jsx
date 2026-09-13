@@ -209,7 +209,6 @@ export default function Upload() {
       }
 
       const resdata = await res.json();
-
       if (!res.ok) {
         throw new Error(`${resdata.message}, Status Code: ${res.status}`);
       }

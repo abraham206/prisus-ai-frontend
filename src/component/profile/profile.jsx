@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 // #6B7280
 
 // #764649
-// https://prisus-backend.onrender.com
+// https://prisus-backend.onrender.com//
 
 const arr = [1, 2];
 console.log(arr.length);
@@ -43,6 +43,8 @@ export default function Userprofile() {
     setEditPassword,
     setName,
     setEmail,
+    name,
+    email,
     err,
     setErr,
     userQuiz,
@@ -52,6 +54,7 @@ export default function Userprofile() {
   const color = userData?.verified ? "rgb(116, 198, 72)" : "#f63737";
   const borderColor = userData?.verified ? "rgb(43, 75, 26)" : "#f63737";
   const navigate = useNavigate();
+  const [allQuiz, setAllQuiz] = useState([]);
 
   useEffect(() => {
     const refreshToken = async () => {
@@ -74,6 +77,7 @@ export default function Userprofile() {
 
         const data = await response.json();
         console.log(data);
+
         setSigninToken(data.token);
       } catch (error) {
         setSigninToken(null);
@@ -197,7 +201,8 @@ export default function Userprofile() {
         const user = await res.json();
         console.log(user);
         setUserData(user.user);
-        setUserQuiz(user.user.quizCreated);
+        setAllQuiz(user.quiz);
+        setUserQuiz(user.quiz);
         setUserName(user.user.name);
         setEmail(user.user.email);
         setName(user.user.name);
@@ -246,7 +251,7 @@ export default function Userprofile() {
               {userData?.name.slice(0, 1).toUpperCase() || "A"}
             </div>
             <div className="profile-mini-detail">
-              <span className="white">{userData?.name}</span>
+              <span className="white">{name}</span>
               <span style={{ color: "rgb(187, 186, 186)", fontSize: ".7rem" }}>
                 {userData?.email}
               </span>
@@ -258,13 +263,13 @@ export default function Userprofile() {
               <p className="credential">
                 <LuCircleUserRound className="user-icon" /> Full name
               </p>
-              <p className="credential-info fname">{userData?.name}</p>
+              <p className="credential-info fname">{name && name}</p>
             </div>
             <div className="profile-details__info">
               <p className="credential">
                 <LuMail className="user-icon" /> Email
               </p>
-              <p className="credential-info">{userData?.email}</p>
+              <p className="credential-info fname">{email && email}</p>
             </div>
             <div className="profile-details__info">
               <p className="credential">
@@ -318,7 +323,7 @@ export default function Userprofile() {
         <div className="user-quiz">
           <p>Quiz History</p>
           <div className="user-quiz-container">
-            {userData?.quizCreated?.slice(0, 5).map((quiz) => {
+            {allQuiz.slice(0, 5).map((quiz) => {
               return (
                 <div
                   onClick={() => {
@@ -352,7 +357,7 @@ export default function Userprofile() {
                   </div>
                   <div className="user-quiz-container-2">
                     <div className="user-quiz-score">
-                      {quiz.percent && <ProgressCircle percentage={33} />}
+                      {quiz.score && <ProgressCircle percentage={quiz.score} />}
                     </div>
 
                     <div className="user-quiz-time">
@@ -368,7 +373,7 @@ export default function Userprofile() {
             })}
           </div>
           <div className="button-container-3">
-            {userData?.quizCreated.length > 5 && (
+            {allQuiz.length > 5 && (
               <button
                 className="view-all"
                 onClick={() => {

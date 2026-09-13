@@ -4,7 +4,7 @@
 }
 
 .word {
-  transform: translateY(5rem);
+  transform: translateY(7rem);
   width: 85%;
   display: flex;
   margin: 0 auto;
@@ -34,7 +34,7 @@
   width: 60rem;
   min-height: 30rem;
   padding-bottom: 2rem;
-  transform: translateY(7rem);
+  transform: translateY(9rem);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -49,8 +49,11 @@
 .user-profile {
   width: 28%;
   /* background-color: #1e2431; */
-  background-color: rgb(20, 28, 45);
-
+  background: linear-gradient(
+    145deg,
+    rgba(10, 23, 40, 0.85),
+    rgba(4, 14, 27, 0.92)
+  );
   border: 1px solid rgb(65, 65, 65);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.296);
   height: 100%;
@@ -60,7 +63,11 @@
 .user-quiz {
   width: 70%;
   height: 100%;
-  background-color: rgb(20, 28, 45);
+  background: linear-gradient(
+    145deg,
+    rgba(10, 23, 40, 0.85),
+    rgba(4, 14, 27, 0.92)
+  );
   margin-left: 2rem;
   border: 1px solid rgb(65, 65, 65);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.296);
@@ -163,7 +170,6 @@
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 10px;
-  /* color: rgb(116, 198, 72); */
 }
 
 .user-quiz > p {
@@ -209,10 +215,6 @@
   .user-profile {
     width: 98%;
   }
-
-  /* .edit-button-container {
-    display: none;
-  } */
 }
 .user-quiz-container > div {
   width: 100%;
@@ -350,7 +352,6 @@
 .file-container {
   width: 3.5rem;
   height: 3.5rem;
-  /* background-color: red; */
   margin: 0.3rem auto;
   display: flex;
   justify-content: center;
@@ -362,7 +363,6 @@
 .file-icon {
   font-size: 2.6rem;
   color: rgb(232, 229, 229);
-  /* size: 30; */
 }
 
 @media (max-width: 600px) {
@@ -439,20 +439,6 @@
   }
 }
 
-/* .user-err-messg {
-  background-color: rgb(20, 28, 45);
-  font-size: 0.8rem;
-  color: rgb(203, 202, 202);
-  display: flex;
-  justify-content: center;
-  z-index: 2;
-  height: 2rem;
-  align-items: center;
-  text-align: center;
-  transform: translateY(6rem);
-  width: 80%;
-} */
-
 .fname {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
 }

@@ -34,6 +34,34 @@ export default function Dashboard() {
   const [dashboard, setDashboard] = useState("");
   const [UserTimeSpent, setUserTimeSpent] = useState("");
   const [timeSpent, setTimeSpent] = useState("");
+  // https://prisus-backend.onrender.com
+  useEffect(() => {
+    const refreshToken = async () => {
+      try {
+        const response = await fetch(
+          "https://prisus-backend.onrender.com/api/auth/refresh",
+          {
+            method: "GET",
+            credentials: "include",
+          },
+        );
+
+        console.log(response);
+        if (!response.ok) {
+          throw new Error(
+            `Could Not get token Status Code: ${response.status}`,
+          );
+        }
+
+        const data = await response.json();
+        console.log(data);
+        setSigninToken(data.token);
+      } catch (error) {}
+    };
+
+    refreshToken();
+  }, []);
+
   useEffect(() => {
     const allSection = document.querySelectorAll(".select");
 

@@ -35,7 +35,6 @@ export default function EditUser(props) {
 
         console.log(response);
         if (!response.ok) {
-          setSigninToken(null);
           throw new Error(
             `Could Not get token Status Code: ${response.status}`,
           );
@@ -44,9 +43,7 @@ export default function EditUser(props) {
         const data = await response.json();
         console.log(data);
         setSigninToken(data.token);
-      } catch (error) {
-        setSigninToken(null);
-      }
+      } catch (error) {}
     };
 
     refreshToken();
@@ -54,7 +51,8 @@ export default function EditUser(props) {
 
   const updateUser = async () => {
     setShowEditUser(false);
-
+    setName(name);
+    setEmail(email);
     try {
       if (name === "" || email === "") {
         throw new Error("All fields must be filled up!");
@@ -90,7 +88,7 @@ export default function EditUser(props) {
         }
         setSigninToken(refreshData.token);
         // Retry original request with new token
-        res = await fetch("http://localhost:8080/api/edit-user", {
+        res = await fetch("https://prisus-backend.onrender.com/api/edit-user", {
           method: "PATCH",
           credentials: "include",
           headers: {
@@ -103,15 +101,18 @@ export default function EditUser(props) {
 
       const data = await res.json();
       if (!res.ok) {
+        setName("");
+        setEmail("");
         throw new Error(`${data.message}, ${res.status}`);
       }
 
       console.log(data);
       setErr(data.message);
-      // props.clickevent();
     } catch (error) {
       console.log(error);
       setErr(error.message);
+      setName("");
+      setEmail("");
     }
   };
   return (

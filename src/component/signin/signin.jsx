@@ -89,20 +89,17 @@ export default function SignIn() {
     console.log(e);
     setLoading(true);
     try {
-      const res = await fetch(
-        "https://prisus-backend.onrender.com/api/auth/signin",
-        {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email,
-            password: password,
-          }),
+      const res = await fetch("https://prisus-backend.onrender.com/api/auth/signin", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
 
       const data = await res.json();
 

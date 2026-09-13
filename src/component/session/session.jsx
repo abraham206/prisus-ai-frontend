@@ -13,7 +13,12 @@ import {
   FaClock,
 } from "react-icons/fa6";
 // import { LuClipboardCheck } from "react-icons/fa6";
-import { LuClipboardCheck, LuTrendingUp } from "react-icons/lu";
+import {
+  LuClipboardCheck,
+  LuTrendingUp,
+  LuArrowRight,
+  LuArrowLeft,
+} from "react-icons/lu";
 import { FaCalendar } from "react-icons/fa";
 import { GlobalState } from "../../App";
 
@@ -40,6 +45,112 @@ export default function Session() {
   const [type, settype] = useState("All");
   const [nonFlashcard, setNonFlashcard] = useState("");
   const navigate = useNavigate();
+  const [page, setPage] = useState(1);
+  const start = (page - 1) * 5;
+  const end = page * 5;
+  const resultPerPage = 5;
+  const numRes = session?.length;
+  const numPag = Math.ceil(numRes / resultPerPage);
+
+  useEffect(() => {
+    const refreshToken = async () => {
+      try {
+        const response = await fetch(
+          "https://prisus-backend.onrender.com/api/auth/refresh",
+          {
+            method: "GET",
+            credentials: "include",
+          },
+        );
+
+        console.log(response);
+        if (!response.ok) {
+          throw new Error(
+            `Could Not get token Status Code: ${response.status}`,
+          );
+        }
+
+        const data = await response.json();
+        console.log(data);
+        setSigninToken(data.token);
+      } catch (error) {}
+    };
+
+    refreshToken();
+  }, []);
+
+  const buttonFunc = () => {
+    if (page === 1 && numPag > 1) {
+      console.log("first page and others");
+      return (
+        <>
+          <div className="arrow-container" style={{ opacity: 0 }}>
+            <LuArrowLeft />
+          </div>
+
+          <div className="arrow-container">
+            <LuArrowRight
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setPage((prevPage) => prevPage + 1);
+              }}
+            />
+          </div>
+        </>
+      );
+    }
+
+    if (page === 1 && numPag <= 1) {
+      return null;
+    }
+
+    if (page === numPag && numPag > 1) {
+      console.log("last page");
+      return (
+        <>
+          <div className="arrow-container">
+            <LuArrowLeft
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setPage((prevPage) => prevPage - 1);
+              }}
+            />
+          </div>
+
+          <div className="arrow-container" style={{ opacity: 0 }}>
+            <LuArrowLeft />
+          </div>
+        </>
+      );
+    }
+
+    if (page < numPag) {
+      return (
+        <>
+          <div className="arrow-container">
+            <LuArrowLeft
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setPage((prevPage) => prevPage - 1);
+              }}
+            />
+          </div>
+
+          <div className="arrow-container">
+            <LuArrowRight
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setPage((prevPage) => prevPage + 1);
+              }}
+            />
+          </div>
+        </>
+      );
+    }
+  };
+  useEffect(() => {
+    console.log(numPag);
+  }, [session]);
 
   useEffect(() => {
     const refreshToken = async () => {
@@ -249,7 +360,7 @@ export default function Session() {
   }, [session, type]);
 
   return (
-    <main className="dashboard">
+    <main className="dashboard session-box">
       {loading ? (
         <div className="spinner-container-div">
           <Spinner />
@@ -326,7 +437,7 @@ export default function Session() {
                 <div className="dashboard-data">
                   <span className="same">Total time</span>
                   <span className="same val">
-                    {totalTimePerUser || "00hr:00min"}
+                    {totalTimePerUser || "0hr:00min"}
                   </span>
                   <span className="same">Spent</span>
                 </div>
@@ -426,14 +537,14 @@ export default function Session() {
             </div>
 
             <div className="session-contents">
-              {allSession &&
-                allSession?.map((el) => {
+              {allSession && allSession.length > 0 ? (
+                allSession.slice(start, end)?.map((el) => {
                   let color;
                   if (el.score > 75 && el.score) {
                     color = "rgb(11, 199, 96)";
                   }
 
-                  if (el.score > 50 && el.score < 75) {
+                  if (el.score >= 50 && el.score < 75) {
                     color = "rgb(255, 196, 0)";
                   }
 
@@ -460,9 +571,12 @@ export default function Session() {
                           </span>
                           <div className="session-detail">
                             <span className="session-number">
-                              {el?.number || "20"} Questions
+                              {el?.number || "20"}{" "}
+                              {el.type === "quiz" ? "Questions" : "cards"}
                             </span>
-                            <span className="session-type-session">Quiz</span>
+                            <span className="session-type-session">
+                              {el?.type}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -470,17 +584,36 @@ export default function Session() {
                       <div
                         className="session-file-container"
                         style={{
-                          backgroundColor: `${el.filetype === "pdf" ? "#EF4444" : "#3B82F6"}`,
+                          backgroundColor: `${el.fileType === ".pdf" ? "#EF4444" : "#3B82F6"}`,
                         }}
                       >
-                        {el.filetype === "pdf" ? <FaFilePdf /> : <FaFileWord />}
+                        {el.fileType === ".pdf" ? (
+                          <FaFilePdf />
+                        ) : (
+                          <FaFileWord />
+                        )}
                       </div>
-                      <div
-                        className="session-type-score"
-                        style={{ color: color }}
-                      >
-                        {"score " + el.score}%
+                      <div className="session-type-score">
+                        {el.score ? (
+                          <p className="quiz-score">
+                            <span style={{ color: "rgb(160, 159, 159)" }}>
+                              Score
+                            </span>{" "}
+                            <span style={{ color: color }}>{el.score}%</span>
+                          </p>
+                        ) : (
+                          <p className="quiz-score">
+                            <span style={{ color: "rgb(160, 159, 159)" }}>
+                              No
+                            </span>{" "}
+                            <span style={{ color: "rgb(160, 159, 159)" }}>
+                              Score
+                            </span>
+                          </p>
+                        )}
                       </div>
+
+                      {type === "flashcards" && <div></div>}
                       <div className="session-type-date">
                         <span className="type-date">{el.date}</span>
                         <span className="type-time">{el.time}</span>
@@ -488,15 +621,20 @@ export default function Session() {
 
                       <div
                         className="session-button-review"
+                        style={{ cursor: "pointer" }}
                         onClick={() => fetchFlashcard(el.typeId, el.type)}
                       >
                         View
                       </div>
                     </div>
                   );
-                })}
+                })
+              ) : (
+                <p className="nothing">Upload a document to start studying!</p>
+              )}
             </div>
           </div>
+          <div className="page-navigation-button">{buttonFunc()}</div>
           <h2 className="motto-word">
             Limit Only Exists In The Cerebral Cortex!!
           </h2>

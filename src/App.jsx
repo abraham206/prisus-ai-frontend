@@ -35,6 +35,7 @@ function App() {
   const [userData, setUserData] = useState();
   const [loading, setLoading] = useState(false);
   const [auth, setAuth] = useState(localStorage.getItem("auth") || false);
+  // const [auth, setAuth] = useState(true);
   const [checkScore, setCheckScore] = useState(false);
   const [flashCardData, setFlashCardData] = useState("");
   const [showEditUser, setShowEditUser] = useState(false);

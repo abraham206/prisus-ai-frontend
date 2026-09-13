@@ -1,6 +1,6 @@
-.session {
+.session-box {
   min-height: 50rem;
-  padding-bottom: 3rem;
+  padding-bottom: 15rem;
 }
 
 .filters {
@@ -139,7 +139,9 @@
   background-color: #9857ff3d;
   color: #9857ff;
   font-weight: 600;
-  width: 8rem;
+  width: auto;
+  padding-left: 0.51rem;
+  padding-right: 0.51rem;
   height: 1.7rem;
   text-align: center;
   border: 1px solid #9857ff31;
@@ -151,7 +153,9 @@
 }
 
 .session-type-session {
-  width: 4rem;
+  width: auto;
+  padding-left: 0.51rem;
+  padding-right: 0.51rem;
   border: 1px solid #9857ff5d;
   background-color: #9857ff15;
   color: #9857ff;
@@ -246,7 +250,7 @@
 }
 
 .session-button-review {
-  width: 4rem;
+  width: auto;
   border: 1px solid #9857ff5d;
   background-color: #9857ff15;
   color: #9857ff;
@@ -299,6 +303,7 @@
 
   .session-type-name {
     width: 100%;
+    transform: translateY(-0.51rem);
   }
 
   .session-about {
@@ -330,4 +335,62 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.quiz-score {
+  display: flex;
+  flex-direction: column;
+  height: 200%;
+  justify-content: space-around;
+}
+
+@media (max-width: 558px) {
+  .quiz-score {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 422px) {
+  .quiz-score {
+    font-size: 0.7rem;
+  }
+
+  .session-file-container {
+    display: none;
+  }
+}
+
+.page-navigation-button {
+  float: right;
+  margin-right: 2rem;
+  width: 8rem;
+  display: flex;
+  align-items: center;
+  transform: translateY(1rem);
+  justify-content: space-between;
+  font-size: 1.4rem;
+  color: #9857ff;
+}
+
+.arrow-container {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9757ff4e;
+  border: 1px solid #9757ff4e;
+  border-radius: 8px;
+  font-size: 1.3rem;
+}
+
+.nothing {
+  text-align: center;
+  color: rgb(218, 216, 216);
+}
+
+@media (max-width: 350px) {
+  .nothing {
+    font-size: 0.8rem;
+  }
 }

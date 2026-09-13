@@ -265,14 +265,23 @@ export default function Score() {
         <div className="about-quiz-score h">
           <div className="quiz-detail-score">
             <div className="quiz-detail-about">
-              <div className="document-background">
-                <FaFilePdf className="score-file" />
+              <div
+                className="document-background"
+                style={{
+                  backgroundColor: `${quizData.fileType === ".pdf" ? "#ef4444" : "#3B82F6"}`,
+                }}
+              >
+                {quizData.fileType === ".pdf" ? (
+                  <FaFilePdf className="score-file" />
+                ) : (
+                  <FaFileWord className="score-file" />
+                )}
               </div>
               <div className="quiz-score-about">
                 <span className="title">{quizData?.subject}</span>
                 <span className="quiz-score-features">
                   {quizData?.questions?.length} Questions . Multiple choice
-                </span>
+                </span>{" "}
                 <span className="quiz-score-date">
                   {quizData?.date} at {quizData?.time}
                 </span>
