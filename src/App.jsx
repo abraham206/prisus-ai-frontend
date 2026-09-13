@@ -103,82 +103,81 @@ function App() {
           }}
         >
           {/* <Suspense fallback={() => <h1>Loading......</h1>}> */}
+          <Nav />
           <Routes>
-            <Route exact path="/" element={<Nav />}>
-              <Route path="/signin" element={<Signin />} />
-              <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
 
-              <Route path="/" element={<Home />} />
-              <Route path="/About" element={<AboutPage />} />
-              <Route
-                path="/Upload"
-                element={
-                  <>
-                    <Upload />
-                  </>
-                }
-              />
-              <Route
-                path="/dashboard"
-                element={
-                  <>
-                    <ProtectedRoute>
-                      <Dashboard />
-                    </ProtectedRoute>
-                  </>
-                }
-              />
-              <Route
-                path="/sessions"
-                element={
-                  <>
-                    <ProtectedRoute>
-                      <Session />
-                    </ProtectedRoute>
-                  </>
-                }
-              />
-              <Route
-                path="/quiz/:id"
-                element={
-                  <>
-                    <AuthorizeQuiz>
-                      <Quiz />
-                    </AuthorizeQuiz>
-                  </>
-                }
-              />
-              <Route
-                path="/userpage"
-                element={
-                  <>
-                    <ProtectedRoute>
-                      <Userprofile />
-                    </ProtectedRoute>
-                  </>
-                }
-              />
-              <Route
-                path="/userscore/:quizId"
-                element={
-                  <>
-                    <Authorize>
-                      <Score />
-                    </Authorize>
-                  </>
-                }
-              />
-              <Route
-                path="/flashcard/:id"
-                element={
-                  <>
-                    <AuthorizeCards>
-                      <Flashcard />
-                    </AuthorizeCards>
-                  </>
-                }
-              />
-            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/About" element={<AboutPage />} />
+            <Route
+              path="/Upload"
+              element={
+                <>
+                  <Upload />
+                </>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <>
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                </>
+              }
+            />
+            <Route
+              path="/sessions"
+              element={
+                <>
+                  <ProtectedRoute>
+                    <Session />
+                  </ProtectedRoute>
+                </>
+              }
+            />
+            <Route
+              path="/quiz/:id"
+              element={
+                <>
+                  <AuthorizeQuiz>
+                    <Quiz />
+                  </AuthorizeQuiz>
+                </>
+              }
+            />
+            <Route
+              path="/userpage"
+              element={
+                <>
+                  <ProtectedRoute>
+                    <Userprofile />
+                  </ProtectedRoute>
+                </>
+              }
+            />
+            <Route
+              path="/userscore/:quizId"
+              element={
+                <>
+                  <Authorize>
+                    <Score />
+                  </Authorize>
+                </>
+              }
+            />
+            <Route
+              path="/flashcard/:id"
+              element={
+                <>
+                  <AuthorizeCards>
+                    <Flashcard />
+                  </AuthorizeCards>
+                </>
+              }
+            />
           </Routes>
           {/* </Suspense> */}
         </GlobalState.Provider>
