@@ -70,7 +70,6 @@ export default function Userprofile() {
           },
         );
 
-        console.log(response);
         if (!response.ok) {
           setSigninToken(null);
         }
@@ -138,7 +137,6 @@ export default function Userprofile() {
         setSigninToken(null);
       }
 
-      console.log(data);
       localStorage.removeItem("auth");
       setAuth(false);
       navigate("/");
@@ -163,7 +161,6 @@ export default function Userprofile() {
             },
           },
         );
-        console.log(res);
         // If access token expired
         if (res?.status === 401) {
           const refreshRes = await fetch(
