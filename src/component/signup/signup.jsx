@@ -64,7 +64,6 @@ export default function Signup() {
 
     const sectionObserver = new IntersectionObserver(
       (entries) => {
-        console.log(entries);
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.remove("animation");
@@ -91,7 +90,6 @@ export default function Signup() {
 
   const signup = async (e) => {
     setLoading(true);
-    console.log(e);
     try {
       const res = await fetch(
         "https://prisus-backend.onrender.com/api/signup",
@@ -114,7 +112,6 @@ export default function Signup() {
         throw new Error(`${data.message}, ${res.status}`);
       }
 
-      console.log(data);
       setSigninToken(data.token);
       navigate("/userPage");
     } catch (error) {

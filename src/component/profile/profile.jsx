@@ -76,7 +76,6 @@ export default function Userprofile() {
         }
 
         const data = await response.json();
-        console.log(data);
 
         setSigninToken(data.token);
       } catch (error) {
@@ -115,7 +114,6 @@ export default function Userprofile() {
           },
         );
 
-        console.log(refreshRes);
         const refreshData = await refreshRes.json();
         if (!res?.ok) {
           throw new Error(`Something went wrong, Status code ${res?.status}`);
@@ -179,7 +177,6 @@ export default function Userprofile() {
             },
           );
 
-          console.log(refreshRes);
           const refreshData = await refreshRes.json();
           if (!refreshRes?.ok) {
             throw new Error(
@@ -199,7 +196,6 @@ export default function Userprofile() {
         }
 
         const user = await res.json();
-        console.log(user);
         setUserData(user.user);
         setAllQuiz(user.quiz);
         setUserQuiz(user.quiz);
@@ -207,7 +203,6 @@ export default function Userprofile() {
         setEmail(user.user.email);
         setName(user.user.name);
       } catch (error) {
-        console.log(error.message);
         setErr(`${error.message}, try again later!`);
       } finally {
         setLoading(false);

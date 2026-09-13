@@ -48,7 +48,6 @@ export default function Sidedrawer(props) {
           },
         );
 
-        console.log(refreshRes);
         const refreshData = await refreshRes.json();
         if (!res?.ok) {
           throw new Error(`Something went wrong, Status code ${res?.status}`);
@@ -74,7 +73,6 @@ export default function Sidedrawer(props) {
       }
 
       setErr(data.message);
-      console.log(data);
       localStorage.removeItem("auth");
       setAuth(false);
       navigate("/");

@@ -68,7 +68,6 @@ export default function SignIn() {
 
     const sectionObserver = new IntersectionObserver(
       (entries) => {
-        console.log(entries);
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.remove("animation");
@@ -85,34 +84,33 @@ export default function SignIn() {
   }, []);
 
   const signin = async (e) => {
-    console.log(email, password);
-    console.log(e);
     setLoading(true);
     try {
-      const res = await fetch("https://prisus-backend.onrender.com/api/auth/signin", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        "https://prisus-backend.onrender.com/api/auth/signin",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
         },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      });
+      );
 
       const data = await res.json();
 
       if (!res.ok) {
         throw new Error(`${data.message}, ${res.status}`);
       }
-      console.log(data);
       setSigninToken(data.token);
       navigate("/dashboard");
       localStorage.setItem("auth", true);
       setAuth(true);
     } catch (error) {
-      console.log(error);
       setErr(`⚠ ${error.message}, Try Again Later`);
     } finally {
       setLoading(false);

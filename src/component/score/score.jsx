@@ -44,7 +44,6 @@ export default function Score() {
           },
         );
 
-        console.log(response);
         if (!response.ok) {
           setSigninToken(null);
           throw new Error(
@@ -53,7 +52,6 @@ export default function Score() {
         }
 
         const data = await response.json();
-        console.log(data);
         setSigninToken(data.token);
       } catch (error) {
         setSigninToken(null);
@@ -65,8 +63,6 @@ export default function Score() {
 
   const id = quizData?.id;
   const [data, setData] = useState(null);
-  console.log(totalTime);
-  console.log(array, "score");
 
   let questions;
 
@@ -112,8 +108,6 @@ export default function Score() {
   const totalSec = `${Math.floor(totalTime % 60)}`.padStart(2, "0");
 
   const { quizId } = useParams();
-  console.log(quizId);
-
   useEffect(() => {
     setShowQuiz(false);
   }, []);
@@ -147,7 +141,6 @@ export default function Score() {
             );
 
             if (!refreshRes.ok) {
-              console.log("err");
             }
             const data = await refreshRes.json();
             setSigninToken(data.token);
@@ -169,7 +162,6 @@ export default function Score() {
             throw Error(`${data.message}, Status code: ${res.status}`);
           }
 
-          console.log(data);
           setQuizData(data.quiz);
           setArray(data.quiz.answeredQuestions);
           setTotalTime(data.quiz.duration);
@@ -241,8 +233,6 @@ export default function Score() {
         if (!res.ok) {
           throw new Error(result.message + " " + "Status Code: " + res.status);
         }
-
-        console.log(result);
       }
     } catch (error) {
       setErr(error.message);

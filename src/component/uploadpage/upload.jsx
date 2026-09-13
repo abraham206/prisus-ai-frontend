@@ -44,7 +44,6 @@ export default function Upload() {
   };
   const handleimage = (e) => {
     const file = e.target.files[0];
-    console.log(file);
     setFile(file);
   };
 
@@ -66,7 +65,6 @@ export default function Upload() {
           },
         );
 
-        console.log(response);
         if (!response.ok) {
           setSigninToken(null);
           throw new Error(
@@ -75,7 +73,6 @@ export default function Upload() {
         }
 
         const data = await response.json();
-        console.log(data);
         setSigninToken(data.token);
       } catch (error) {
         setSigninToken(null);
@@ -117,7 +114,6 @@ export default function Upload() {
         if (!res?.ok) {
           throw Error(`Something went wrong, Status code ${res?.status}`);
         }
-        console.log(refreshRes);
         const refreshData = await refreshRes.json();
         setSigninToken(refreshData.token);
         // Retry original request with new token
@@ -133,7 +129,6 @@ export default function Upload() {
         );
       }
       const data = await res.json();
-      console.log(data);
       if (!res.ok) {
         throw new Error(`${data.message}, Status Code: ${res.status}`);
       }
@@ -142,7 +137,6 @@ export default function Upload() {
       setShowFlashcard(true);
       navigate(`/flashcard/${id}`);
     } catch (error) {
-      console.log(error);
       setErr(error.message);
     } finally {
       setLoading(false);
@@ -158,7 +152,6 @@ export default function Upload() {
       const formdata = new FormData();
       const timeLimit = +time;
       const totalQuestions = +number;
-      console.log(totalQuestions, timeLimit);
       formdata.append("document", file);
       formdata.append("duration", timeLimit);
       formdata.append("mode", difficulty);
@@ -195,7 +188,6 @@ export default function Upload() {
             `Something went wrong, Status code ${refreshRes?.status}`,
           );
         }
-        console.log(refreshRes);
         const refreshData = await refreshRes.json();
         setSigninToken(refreshData.token);
         // Retry original request with new token
@@ -212,7 +204,6 @@ export default function Upload() {
       if (!res.ok) {
         throw new Error(`${resdata.message}, Status Code: ${res.status}`);
       }
-      console.log(resdata);
       if (resdata) {
         setQuizData(resdata);
         setShowQuiz(true);

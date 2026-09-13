@@ -1,10 +1,7 @@
 import React from "react";
 import "./features.css";
-import image from "../../assets/hero.png";
-// import data from "../../features-data";
 import data from "../../../features-data";
 export default function Features() {
-  console.log(data);
   return (
     <section className="features-section animation select">
       <div className="features-section-container">

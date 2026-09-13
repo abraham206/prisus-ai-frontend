@@ -35,7 +35,6 @@ export default function EditPassword(props) {
         }
 
         const data = await response.json();
-        console.log(data);
         setSigninToken(data.token);
       } catch (error) {
         setSigninToken(null);
@@ -78,7 +77,6 @@ export default function EditPassword(props) {
           },
         );
 
-        console.log(refreshRes);
         const refreshData = await refreshRes.json();
         if (!res?.ok) {
           return;
@@ -116,7 +114,6 @@ export default function EditPassword(props) {
     }
   };
 
-  const editHandler = async () => {};
   return (
     <main>
       <div className="edit-password-section">

@@ -10,27 +10,6 @@ export default function AboutPage() {
 
     const sectionObserver = new IntersectionObserver(
       (entries) => {
-        console.log(entries);
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove("animation");
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-      },
-    );
-
-    allSection.forEach((section) => sectionObserver.observe(section));
-    return () => sectionObserver.disconnect();
-  }, []);
-  useEffect(() => {
-    const allSection = document.querySelectorAll(".select");
-
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        console.log(entries);
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.remove("animation");

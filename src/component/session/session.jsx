@@ -63,7 +63,6 @@ export default function Session() {
           },
         );
 
-        console.log(response);
         if (!response.ok) {
           throw new Error(
             `Could Not get token Status Code: ${response.status}`,
@@ -163,7 +162,6 @@ export default function Session() {
           },
         );
 
-        console.log(response);
         if (!response.ok) {
           setSigninToken(null);
           throw new Error(
@@ -172,7 +170,6 @@ export default function Session() {
         }
 
         const data = await response.json();
-        console.log(data);
         setSigninToken(data.token);
       } catch (error) {
         setSigninToken(null);
@@ -190,8 +187,6 @@ export default function Session() {
     }
 
     if (sessionType === "flashcards") {
-      console.log("click");
-
       try {
         let res = await fetch(
           `https://prisus-backend.onrender.com/api/get-flashcard/${id}`,
@@ -254,7 +249,6 @@ export default function Session() {
 
     const sectionObserver = new IntersectionObserver(
       (entries) => {
-        console.log(entries);
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.remove("animation");
@@ -269,10 +263,6 @@ export default function Session() {
     allSection.forEach((section) => sectionObserver.observe(section));
     return () => sectionObserver.disconnect();
   }, []);
-
-  useEffect(() => {
-    console.log(type);
-  }, [type]);
 
   const getDashboard = async () => {
     setLoading(true);
@@ -300,7 +290,6 @@ export default function Session() {
           },
         );
 
-        console.log(refreshRes);
         const refreshData = await refreshRes.json();
         if (!res?.ok) {
           setSigninToken(null);
@@ -323,7 +312,6 @@ export default function Session() {
       if (!res.ok) {
         setErr(`${data.message} status code:${res.status}`);
       }
-      console.log(data);
       setSession(data.sessions);
       setAllSession(data.sessions);
       setNonFlashcard(data.totalFlashcards);
@@ -355,7 +343,6 @@ export default function Session() {
 
     if (type === "All") {
       setAllSession(session);
-      console.log("all session", allSession);
     }
   }, [session, type]);
 

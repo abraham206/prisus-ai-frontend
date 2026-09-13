@@ -41,7 +41,6 @@ export default function EditUser(props) {
         }
 
         const data = await response.json();
-        console.log(data);
         setSigninToken(data.token);
       } catch (error) {}
     };
@@ -81,7 +80,6 @@ export default function EditUser(props) {
           },
         );
 
-        console.log(refreshRes);
         const refreshData = await refreshRes.json();
         if (!res?.ok) {
           setSigninToken(null);
@@ -106,10 +104,8 @@ export default function EditUser(props) {
         throw new Error(`${data.message}, ${res.status}`);
       }
 
-      console.log(data);
       setErr(data.message);
     } catch (error) {
-      console.log(error);
       setErr(error.message);
       setName("");
       setEmail("");

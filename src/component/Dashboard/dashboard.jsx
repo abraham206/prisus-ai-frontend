@@ -54,7 +54,6 @@ export default function Dashboard() {
         }
 
         const data = await response.json();
-        console.log(data);
         setSigninToken(data.token);
       } catch (error) {}
     };
@@ -67,14 +66,10 @@ export default function Dashboard() {
 
     const sectionObserver = new IntersectionObserver(
       (entries) => {
-        console.log(entries);
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.remove("animation");
           }
-          // if (!entry.isIntersecting) {
-          //   entry.target.classList.add("animation");
-          // }
         });
       },
       {
@@ -112,7 +107,6 @@ export default function Dashboard() {
           },
         );
 
-        console.log(refreshRes);
         const refreshData = await refreshRes.json();
         if (!res?.ok) {
           setSigninToken(null);
@@ -135,7 +129,6 @@ export default function Dashboard() {
       if (!res.ok) {
         setErr(`${data.message} status code:${res.status}`);
       }
-      console.log(data);
       setDashboard(data.data);
 
       if (data.data?.userStats && data.data?.userStats[0]?.totalTime === null) {

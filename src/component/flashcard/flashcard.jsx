@@ -12,7 +12,6 @@ export default function flashcard() {
   const navigate = useNavigate();
   const { flashCardData, setFlashCardData, setShowFlashcard } =
     useContext(GlobalState);
-  console.log(flashCardData);
   const [cardNo, setCardNo] = useState(1);
   let frontClass = ["flashcard-container_front", "show-front"];
   let backClass = ["flashcard-container_back", "hide-back"];

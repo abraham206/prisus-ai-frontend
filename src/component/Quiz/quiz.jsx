@@ -34,7 +34,6 @@ export default function Quiz() {
     setShowScore,
     showScore,
   } = useContext(GlobalState);
-  console.log(array, "answered questions");
 
   let questions;
   let maxNo;
@@ -70,7 +69,6 @@ export default function Quiz() {
     if (time === 0) {
       setStop(true);
       setTimeDone(time);
-      console.log(time);
       setShowScore(true);
       setArray((prevArray) => {
         return prevArray.map((el) => {
@@ -380,20 +378,6 @@ export default function Quiz() {
                           : el,
                       );
                     }
-                    // else {
-                    //   updatedArray = [
-                    //     ...array,
-                    //     {
-                    //       questionNo: questionNumber,
-                    //       question: questions[questionNumber].question,
-                    //       answerSelected: userAnswer,
-                    //       correctAnswer: questions[questionNumber].answer,
-                    //       explanation: questions[questionNumber].explanation,
-                    //     },
-                    //   ];
-                    // }
-
-                    // Save the complete answers array
                     setArray(updatedArray);
 
                     setStop(true);
