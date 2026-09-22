@@ -191,7 +191,7 @@ export default function Sidedrawer(props) {
             )}
           </ul>
         </div>
-        {~!auth && (
+        {auth && (
           <p
             className="logout-button"
             onClick={() => {
